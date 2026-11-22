@@ -1,0 +1,7 @@
+{
+  "item.npcmod.npc_spawner": "Invocador de NPC",
+  "item.npcmod.npc_editor": "Varita de edición de NPC",
+  "entity.npcmod.npc": "NPC",
+  "itemGroup.npcmod": "NPC Mod",
+  "npcmod.editor.title": "✦ Editor de NPC ✦"
+}

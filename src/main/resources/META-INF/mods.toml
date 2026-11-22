@@ -1,0 +1,25 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All Rights Reserved"
+
+[[mods]]
+modId="npcmod"
+version="1.0.0"
+displayName="NPC Mod"
+description='''
+NPCs editables: ítem para spawnear, ítem editor con menú de fantasía, modelos .geo.json (compatibles con BBS), diálogos, voz, acciones y equipamiento.
+'''
+
+[[dependencies.npcmod]]
+modId="forge"
+mandatory=true
+versionRange="[47,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.npcmod]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1,1.21)"
+ordering="NONE"
+side="BOTH"
