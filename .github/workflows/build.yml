@@ -1,0 +1,43 @@
+name: Build NPC Mod
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Gradle 8.1.1
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: 8.1.1
+
+      - name: Build
+        run: gradle build --no-daemon
+
+      - name: Guardar .jar como artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: npcmod-jar
+          path: build/libs/npcmod-*.jar
+
+      - name: Publicar en Releases (descarga directa del .jar)
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.${{ github.run_number }}
+          name: NPC Mod v1.0.${{ github.run_number }}
+          files: build/libs/npcmod-*.jar
