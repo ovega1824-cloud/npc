@@ -81,6 +81,11 @@ public class NpcEntity extends PathfinderMob {
     @Override
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
         if (hand != InteractionHand.MAIN_HAND) return InteractionResult.PASS;
+        // con la varita de edición en cualquier mano, el clic lo atiende el ítem (abre el editor)
+        if (player.getMainHandItem().is(com.npcmod.ModRegistry.EDITOR.get())
+                || player.getOffhandItem().is(com.npcmod.ModRegistry.EDITOR.get())) {
+            return InteractionResult.PASS;
+        }
         if (this.level().isClientSide) return InteractionResult.SUCCESS;
         if (player instanceof ServerPlayer sp) {
             runCommandList("onClick", sp);
